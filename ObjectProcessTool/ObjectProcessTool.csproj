@@ -216,5 +216,8 @@
       <Name>SharpMap</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="test.py" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
