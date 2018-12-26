@@ -21,7 +21,7 @@ namespace ObjectProcessTool.Model
         public long Id { get; set; }
 
         public short flag { get; set; }
-
+        [JsonProperty("@type")]
         public string type { get; set; }
 
         [JsonIgnore]
@@ -103,6 +103,9 @@ namespace ObjectProcessTool.Model
                 {
                     return 21;
                 }
+            }else if(this is Relation)
+            {
+                return 24;
             }
             return 0;
         }

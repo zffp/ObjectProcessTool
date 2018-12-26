@@ -42,6 +42,10 @@ namespace ObjectProcessTool.Command
                 {
                     foreach (FeatureDataRow dataRow in ds.Tables[0].Rows)
                     {
+                        if (dataRow.Geometry == null)
+                        {
+                            continue;
+                        }
                         Dictionary<string, object> tags = new Dictionary<string, object>();
                         foreach (DataColumn dataColumn in dataRow.Table.Columns)
                         {
@@ -100,7 +104,7 @@ namespace ObjectProcessTool.Command
             sObject.name = Convert.ToString(entity.GetTagValue("name", ""));
             sObject.actions.Add(new Model.Action() { operation = 33 });
 
-            long pid = Convert.ToInt64(entity.GetTagValue("parentid", 0));
+            long pid = Convert.ToInt64(Convert.ToString(entity.GetTagValue("parentid", 0)));
             sObject.parents.Add(new BaseId() { id = pid });
 
             sObject.trs = new Trs();

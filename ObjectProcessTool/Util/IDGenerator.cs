@@ -12,7 +12,9 @@ namespace ObjectProcessTool.Util
         static IdGenerator generator = new IdGenerator(100);
         public static long CrateId()
         {
-            return generator.CreateId();
+            long result = generator.CreateId();
+            string aa = result.ToString();
+            return Convert.ToInt64(aa.Substring(6));
         }
 
         public static long GetTimeStamp()
