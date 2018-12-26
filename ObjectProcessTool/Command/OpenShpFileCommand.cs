@@ -24,13 +24,17 @@ namespace ObjectProcessTool.Command
         {
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
-
+            openFileDialog.Multiselect = true;
             openFileDialog.Filter = "shpfile(*.shp)|*.shp";
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string fileName = openFileDialog.FileName;
-                OpenShp(fileName, GlobalContainer.GetInstance<Map>("Map"));
+                //string fileName = openFileDialog.FileName;
+                foreach(string fname in openFileDialog.FileNames)
+                {
+                    OpenShp(fname, GlobalContainer.GetInstance<Map>("Map"));
+                }
+                
             }
         }
         private void OpenShp(string shpFileName, Map map)

@@ -35,9 +35,10 @@
             // propertyGrid1
             // 
             this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyGrid1.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.propertyGrid1.Location = new System.Drawing.Point(0, 0);
             this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(350, 748);
+            this.propertyGrid1.Size = new System.Drawing.Size(350, 570);
             this.propertyGrid1.TabIndex = 1;
             // 
             // textBox1
@@ -55,7 +56,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.propertyGrid1);
             this.Controls.Add(this.textBox1);
-   
             this.Name = "PropertyUserControl";
             this.Size = new System.Drawing.Size(350, 748);
             this.ResumeLayout(false);

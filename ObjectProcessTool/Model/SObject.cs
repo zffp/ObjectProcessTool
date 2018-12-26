@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using ObjectProcessTool.Layer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -90,6 +92,9 @@ namespace ObjectProcessTool.Model
         public long sdomain { get; set; }
 
         public List<object> children { get; set; }
+
+        [JsonIgnore]
+        public SObjectLayer Layer { get; set; }
 
         public SObject()
         {

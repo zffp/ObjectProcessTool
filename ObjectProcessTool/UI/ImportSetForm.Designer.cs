@@ -34,6 +34,8 @@
             this.tag_comboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.importlayer_textBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button2
@@ -67,15 +69,15 @@
             // tag_comboBox
             // 
             this.tag_comboBox.FormattingEnabled = true;
-            this.tag_comboBox.Location = new System.Drawing.Point(89, 24);
+            this.tag_comboBox.Location = new System.Drawing.Point(468, 28);
             this.tag_comboBox.Name = "tag_comboBox";
-            this.tag_comboBox.Size = new System.Drawing.Size(189, 23);
+            this.tag_comboBox.Size = new System.Drawing.Size(257, 23);
             this.tag_comboBox.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 27);
+            this.label1.Location = new System.Drawing.Point(398, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 15);
             this.label1.TabIndex = 3;
@@ -90,12 +92,31 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "转换脚本";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(19, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 15);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "导入图层";
+            // 
+            // importlayer_textBox
+            // 
+            this.importlayer_textBox.Enabled = false;
+            this.importlayer_textBox.Location = new System.Drawing.Point(92, 25);
+            this.importlayer_textBox.Name = "importlayer_textBox";
+            this.importlayer_textBox.Size = new System.Drawing.Size(300, 25);
+            this.importlayer_textBox.TabIndex = 5;
+            // 
             // ImportSetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(916, 536);
+            this.Controls.Add(this.importlayer_textBox);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tag_comboBox);
             this.Controls.Add(this.button2);
@@ -117,5 +138,7 @@
         private System.Windows.Forms.ComboBox tag_comboBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox importlayer_textBox;
     }
 }

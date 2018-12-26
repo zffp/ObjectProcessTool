@@ -35,7 +35,6 @@
             this.savesobject_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exit_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.转换ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.shpToSobjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addattr_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeNode_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,6 +54,7 @@
             this.pan_toolStripButton = new System.Windows.Forms.ToolStripButton();
             this.query_toolStripButton = new System.Windows.Forms.ToolStripButton();
             this.movenode_toolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.delete_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.letf_panel.SuspendLayout();
             this.right_panel.SuspendLayout();
@@ -89,35 +89,29 @@
             // openshp_ToolStripMenuItem
             // 
             this.openshp_ToolStripMenuItem.Name = "openshp_ToolStripMenuItem";
-            this.openshp_ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.openshp_ToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
             this.openshp_ToolStripMenuItem.Text = "打开SHP";
             // 
             // savesobject_ToolStripMenuItem
             // 
             this.savesobject_ToolStripMenuItem.Name = "savesobject_ToolStripMenuItem";
-            this.savesobject_ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.savesobject_ToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
             this.savesobject_ToolStripMenuItem.Text = "保存对象";
             // 
             // exit_ToolStripMenuItem
             // 
             this.exit_ToolStripMenuItem.Name = "exit_ToolStripMenuItem";
-            this.exit_ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.exit_ToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
             this.exit_ToolStripMenuItem.Text = "退出";
             this.exit_ToolStripMenuItem.Click += new System.EventHandler(this.exit_ToolStripMenuItem_Click);
             // 
             // 转换ToolStripMenuItem
             // 
             this.转换ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.shpToSobjectToolStripMenuItem});
+            this.delete_ToolStripMenuItem});
             this.转换ToolStripMenuItem.Name = "转换ToolStripMenuItem";
             this.转换ToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
-            this.转换ToolStripMenuItem.Text = "转换";
-            // 
-            // shpToSobjectToolStripMenuItem
-            // 
-            this.shpToSobjectToolStripMenuItem.Name = "shpToSobjectToolStripMenuItem";
-            this.shpToSobjectToolStripMenuItem.Size = new System.Drawing.Size(187, 26);
-            this.shpToSobjectToolStripMenuItem.Text = "ShpToSobject";
+            this.转换ToolStripMenuItem.Text = "编辑";
             // 
             // 操作ToolStripMenuItem
             // 
@@ -302,6 +296,12 @@
             this.movenode_toolStripButton.Text = "移动节点";
             this.movenode_toolStripButton.Click += new System.EventHandler(this.movenode_toolStripButton_Click);
             // 
+            // delete_ToolStripMenuItem
+            // 
+            this.delete_ToolStripMenuItem.Name = "delete_ToolStripMenuItem";
+            this.delete_ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.delete_ToolStripMenuItem.Text = "删除";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -355,10 +355,10 @@
         private System.Windows.Forms.ToolStripMenuItem 操作ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addattr_ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeNode_ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem shpToSobjectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showtext_ToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton openshp_toolStripButton1;
         private System.Windows.Forms.ToolStripButton movenode_toolStripButton;
+        private System.Windows.Forms.ToolStripMenuItem delete_ToolStripMenuItem;
     }
 }
 

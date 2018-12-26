@@ -195,5 +195,30 @@ namespace ObjectProcessTool.Model
             }
             relIdList.Add(relId);
         }
+
+        /// <summary>
+        /// 移除实体
+        /// </summary>
+        /// <param name="entity"></param>
+        public void RemvoeEntity(Entity entity)
+        {
+            this.EntityMap.Remove(entity.Id);
+
+            if (entity is Way)
+            {
+                Way way = entity as Way;
+
+                foreach (Node node in way.Nodes)
+                {
+                    if (ParentWays.ContainsKey(node.Id))
+                    {
+                        if (ParentWays[node.Id].Count == 1)
+                        {
+                            this.EntityMap.Remove(node.Id);
+                        }
+                    }
+                }
+            }
+        }
     }
 }

@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="Command\AddAttrCommand.cs" />
     <Compile Include="Command\CommandManager.cs" />
+    <Compile Include="Command\DeleteSobjectCommand.cs" />
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\OpenShpFileCommand.cs" />
     <Compile Include="Command\RemoveRepeatNodeCommand.cs" />

@@ -37,12 +37,12 @@ namespace ObjectProcessTool
 
             CommandManager.Instance.RelationCommand(openshp_ToolStripMenuItem, new OpenShpFileCommand());
             CommandManager.Instance.RelationCommand(openshp_toolStripButton1, new OpenShpFileCommand());
+            CommandManager.Instance.RelationCommand(delete_ToolStripMenuItem, new DeleteSobjectCommand());
             
-
             //CommandManager.Instance.RelationCommand(shpToOSMToolStripMenuItem, new ShpToOsmCommand());
             CommandManager.Instance.RelationCommand(addattr_ToolStripMenuItem, new AddAttrCommand());
             CommandManager.Instance.RelationCommand(removeNode_ToolStripMenuItem, new RemoveRepeatNodeCommand());
-            CommandManager.Instance.RelationCommand(shpToSobjectToolStripMenuItem, new ShpToSObjectCommand());
+
             CommandManager.Instance.RelationCommand(savesobject_ToolStripMenuItem, new SaveSObjectCommand());
             CommandManager.Instance.RelationCommand(showtext_ToolStripMenuItem, new ShowHideSobjectTextCommand());
            

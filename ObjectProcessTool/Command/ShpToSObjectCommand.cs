@@ -26,7 +26,7 @@ namespace ObjectProcessTool.Command
             ILayer layer = layerCtrlUserControl.GetSelectLayer();
             if (layer != null && layer is VectorLayer)
             {
-                if (!ImportSetting())
+                if (!ImportSetting(layer))
                 {
                     MessageBox.Show("设置导入图层");
                     return;
@@ -60,6 +60,8 @@ namespace ObjectProcessTool.Command
 
                         SObject sObject = CreateSObject(entity);
                         sObjectLayer.SObjects.Add(sObject);
+
+                        sObject.Layer = sObjectLayer;
                     }
 
                     sObjectLayer.RestEnvelope();
@@ -149,9 +151,10 @@ namespace ObjectProcessTool.Command
 
         SObjectLayer sObjectLayer;
 
-        private bool ImportSetting()
+        private bool ImportSetting(ILayer layer)
         {
             ImportSetForm importSetForm = new ImportSetForm();
+            importSetForm.SetImportLayerName(layer.LayerName);
             if (importSetForm.ShowDialog() == DialogResult.OK)
             {
                 ConvertFunction = importSetForm.ConvertFunction();

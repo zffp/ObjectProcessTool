@@ -22,7 +22,10 @@ namespace ObjectProcessTool.UI
         {
             InitializeComponent();
         }
-
+        public void SetImportLayerName(string name)
+        {
+            importlayer_textBox.Text = name;
+        }
         private void ImportSetForm_Load(object sender, EventArgs e)
         {
             tag_comboBox.Items.AddRange(GetOsmLayerNameList().ToArray());
