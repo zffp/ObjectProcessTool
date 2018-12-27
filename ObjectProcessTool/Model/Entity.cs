@@ -1,4 +1,5 @@
-﻿using NetTopologySuite.Geometries;
+﻿using GeoAPI.Geometries;
+using NetTopologySuite.Geometries;
 using Newtonsoft.Json;
 using SharpMap;
 using SharpMap.Data;
@@ -35,6 +36,9 @@ namespace ObjectProcessTool.Model
 
         [JsonIgnore]
         public Geometry Geometry { get; set; }
+
+        [JsonIgnore]
+        public Envelope Envelope { get; set; }
 
         [JsonIgnore]
         public bool IsObject
@@ -101,13 +105,20 @@ namespace ObjectProcessTool.Model
                 }
                 else
                 {
-                    return 21;
+                    return 22;
                 }
-            }else if(this is Relation)
+            }
+            else if (this is Relation)
             {
                 return 24;
             }
             return 0;
+        }
+
+
+        virtual public void CalculationEnvelope()
+        {
+            this.Envelope = new Envelope();
         }
 
         #region ICustomTypeDescriptor

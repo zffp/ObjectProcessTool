@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ObjectProcessTool.Model
 {
-    public class Node : Entity
+    public class Node : Entity, IEqualityComparer<Node>
     {
         [JsonProperty("y")]
         public double Lat { get; set; }
@@ -24,6 +24,8 @@ namespace ObjectProcessTool.Model
         public Way Way { get; set; }
 
         int width = 4;
+
+
 
         public Node(long id) : base(id, "Node")
         {
@@ -59,7 +61,7 @@ namespace ObjectProcessTool.Model
                 if (SObject != null && !string.IsNullOrEmpty(SObject.name))
                 {
                     g.DrawString(SObject.name, font, Brushes.Red, pt1.X, pt1.Y + 1);
-                }                
+                }
             }
 
         }
@@ -74,5 +76,23 @@ namespace ObjectProcessTool.Model
         {
             return envelope.Contains(new Coordinate(Lon, Lat));
         }
+
+
+        public override void CalculationEnvelope()
+        {
+            this.Envelope = new Envelope(Lon, Lon, Lat, Lat);
+        }
+
+        #region IEqualityComparer
+        public bool Equals(Node x, Node y)
+        {
+            return x.Id == y.Id;
+        }
+
+        public int GetHashCode(Node obj)
+        {
+            return obj.Id.GetHashCode();
+        }
+        #endregion
     }
 }

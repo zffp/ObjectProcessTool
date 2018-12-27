@@ -53,21 +53,25 @@ namespace ObjectProcessTool.Layer
 
             foreach (Entity entity in Graph.EntityMap.Where(r => r.Value is Way).Select(r => r.Value))
             {
-                if (envelope.Intersects(entity.Geometry.EnvelopeInternal))
+                if (envelope.Intersects(entity.Envelope))
                 {
                     entity.RenderEntity(g, map);
                 }
             }
             foreach (Entity entity in Graph.EntityMap.Where(r => r.Value is Relation).Select(r => r.Value))
             {
-                if (envelope.Intersects(entity.Geometry.EnvelopeInternal))
+                if (envelope.Intersects(entity.Envelope))
                 {
                     entity.RenderEntity(g, map);
                 }
             }
             foreach (Entity entity in Graph.EntityMap.Where(r => r.Value is Node).Select(r => r.Value))
             {
-                if (envelope.Intersects(entity.Geometry.EnvelopeInternal))
+                if (entity.Envelope == null)
+                {
+                    entity.CalculationEnvelope();
+                }
+                if (envelope.Intersects(entity.Envelope))
                 {
                     entity.RenderEntity(g, map);
                 }

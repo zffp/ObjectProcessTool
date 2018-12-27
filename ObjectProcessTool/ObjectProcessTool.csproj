@@ -98,6 +98,7 @@
     <Compile Include="Command\SaveSObjectCommand.cs" />
     <Compile Include="Command\ShowHideSobjectTextCommand.cs" />
     <Compile Include="Command\ShpToSObjectCommand.cs" />
+    <Compile Include="Command\CoordtransformCommand.cs" />
     <Compile Include="Event\EventManage.cs" />
     <Compile Include="Event\EventNameList.cs" />
     <Compile Include="Layer\LayerManager.cs" />
@@ -163,6 +164,7 @@
     <Compile Include="UI\PropertyUserControl.Designer.cs">
       <DependentUpon>PropertyUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Util\Coordtransform.cs" />
     <Compile Include="Util\GlobalContainer.cs" />
     <Compile Include="Util\IDGenerator.cs" />
     <Compile Include="Util\Singleton.cs" />

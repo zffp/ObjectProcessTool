@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GeoAPI.Geometries;
 using NetTopologySuite.Algorithm;
+using NetTopologySuite.Geometries;
 using Newtonsoft.Json;
 using ObjectProcessTool.Layer;
 using SharpMap;
@@ -114,6 +115,44 @@ namespace ObjectProcessTool.Model
 
             }
             return false;
+        }
+        static GeometryFactory geometryFactory = new GeometryFactory();
+        public override void CalculationEnvelope()
+        {
+            bool isArea = Convert.ToBoolean(GetTagValue("area", false));
+
+            Coordinate[] coordinates = this.Nodes.Select(r => new Coordinate(r.Lon, r.Lat)).ToArray();
+            if (isArea)
+            {
+                this.Geometry = geometryFactory.CreatePolygon(coordinates) as Geometry;
+            }
+            else
+            {
+                this.Geometry = geometryFactory.CreateLineString(coordinates) as Geometry;
+            }
+
+
+            double xmin = 0, xmax = 0, ymin = 0, ymax = 0;
+            for (int i = 0; i < this.Nodes.Count; i++)
+            {
+                Node node = this.Nodes[i];
+                if (i == 0)
+                {
+                    xmin = node.Lon;
+                    xmax = node.Lon;
+                    ymin = node.Lat;
+                    ymax = node.Lat;
+                }
+                else
+                {
+                    xmin = Math.Min(xmin, node.Lon);
+                    xmax = Math.Max(xmax, node.Lon);
+                    ymin = Math.Min(ymin, node.Lat);
+                    ymax = Math.Max(ymax, node.Lat);
+                }
+            }
+
+            this.Envelope = new Envelope(xmin, xmax, ymin, ymax);
         }
     }
 }

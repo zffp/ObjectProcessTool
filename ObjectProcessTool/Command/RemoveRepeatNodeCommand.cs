@@ -24,7 +24,7 @@ namespace ObjectProcessTool.Command
 
 
 
-        double tolerance = 0.000006;
+        double tolerance = 0.0000006;
         public void Execute(object sender, EventArgs e)
         {
             LayerCtrlUserControl layerCtrlUserControl = GlobalContainer.GetInstance<LayerCtrlUserControl>("LayerCtrlUserControl");
@@ -48,6 +48,15 @@ namespace ObjectProcessTool.Command
 
                 nodeList = osmLayer.Graph.EntityMap.Where(r => r.Value is Node && !r.Value.IsObject).Select(r => r.Value).ToList();
                 RemoveRepeatNode(graph, rtree, nodeList);
+
+                List<Entity> entities = osmLayer.Graph.EntityMap.Where(r => r.Value is Way).Select(r => r.Value).ToList();
+
+                foreach (Entity entity in entities)
+                {
+                    Way way = entity as Way;
+
+                    way.Nodes = way.Nodes.Distinct().ToList();
+                }
 
                 MessageBox.Show("完成：" + graph.EntityMap.Count);
             }

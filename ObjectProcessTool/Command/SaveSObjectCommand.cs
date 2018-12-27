@@ -33,13 +33,15 @@ namespace ObjectProcessTool.Command
 
                     SObjectLayer sObjectLayer = layer as SObjectLayer;
 
-                    
+
 
                     string json = JsonConvert.SerializeObject(sObjectLayer.SObjects);
 
 
                     System.IO.File.WriteAllText(saveFileDialog.FileName, json);
 
+
+                    MessageBox.Show("保存成功！");
                 }
             }
             else

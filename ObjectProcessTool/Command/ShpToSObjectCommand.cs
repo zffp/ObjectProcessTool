@@ -58,6 +58,8 @@ namespace ObjectProcessTool.Command
                             ConvertFunction(entity);
                         }
 
+                        entity.CalculationEnvelope();
+
                         SObject sObject = CreateSObject(entity);
                         sObjectLayer.SObjects.Add(sObject);
 

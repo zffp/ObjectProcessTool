@@ -35,6 +35,7 @@
             this.savesobject_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exit_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.转换ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.delete_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addattr_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeNode_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,7 +55,8 @@
             this.pan_toolStripButton = new System.Windows.Forms.ToolStripButton();
             this.query_toolStripButton = new System.Windows.Forms.ToolStripButton();
             this.movenode_toolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.delete_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.wgs84To火星ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.火星ToWgs84ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.letf_panel.SuspendLayout();
             this.right_panel.SuspendLayout();
@@ -113,12 +115,20 @@
             this.转换ToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
             this.转换ToolStripMenuItem.Text = "编辑";
             // 
+            // delete_ToolStripMenuItem
+            // 
+            this.delete_ToolStripMenuItem.Name = "delete_ToolStripMenuItem";
+            this.delete_ToolStripMenuItem.Size = new System.Drawing.Size(114, 26);
+            this.delete_ToolStripMenuItem.Text = "删除";
+            // 
             // 操作ToolStripMenuItem
             // 
             this.操作ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addattr_ToolStripMenuItem,
             this.removeNode_ToolStripMenuItem,
-            this.showtext_ToolStripMenuItem});
+            this.showtext_ToolStripMenuItem,
+            this.wgs84To火星ToolStripMenuItem,
+            this.火星ToWgs84ToolStripMenuItem});
             this.操作ToolStripMenuItem.Name = "操作ToolStripMenuItem";
             this.操作ToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
             this.操作ToolStripMenuItem.Text = "操作";
@@ -126,19 +136,19 @@
             // addattr_ToolStripMenuItem
             // 
             this.addattr_ToolStripMenuItem.Name = "addattr_ToolStripMenuItem";
-            this.addattr_ToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
+            this.addattr_ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.addattr_ToolStripMenuItem.Text = "添加属性";
             // 
             // removeNode_ToolStripMenuItem
             // 
             this.removeNode_ToolStripMenuItem.Name = "removeNode_ToolStripMenuItem";
-            this.removeNode_ToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
+            this.removeNode_ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.removeNode_ToolStripMenuItem.Text = "去除重复点";
             // 
             // showtext_ToolStripMenuItem
             // 
             this.showtext_ToolStripMenuItem.Name = "showtext_ToolStripMenuItem";
-            this.showtext_ToolStripMenuItem.Size = new System.Drawing.Size(174, 26);
+            this.showtext_ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.showtext_ToolStripMenuItem.Text = "显示隐藏注记";
             // 
             // 关于ToolStripMenuItem
@@ -296,11 +306,17 @@
             this.movenode_toolStripButton.Text = "移动节点";
             this.movenode_toolStripButton.Click += new System.EventHandler(this.movenode_toolStripButton_Click);
             // 
-            // delete_ToolStripMenuItem
+            // wgs84To火星ToolStripMenuItem
             // 
-            this.delete_ToolStripMenuItem.Name = "delete_ToolStripMenuItem";
-            this.delete_ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.delete_ToolStripMenuItem.Text = "删除";
+            this.wgs84To火星ToolStripMenuItem.Name = "wgs84To火星ToolStripMenuItem";
+            this.wgs84To火星ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.wgs84To火星ToolStripMenuItem.Text = "Wgs84To火星";
+            // 
+            // 火星ToWgs84ToolStripMenuItem
+            // 
+            this.火星ToWgs84ToolStripMenuItem.Name = "火星ToWgs84ToolStripMenuItem";
+            this.火星ToWgs84ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.火星ToWgs84ToolStripMenuItem.Text = "火星ToWgs84";
             // 
             // MainForm
             // 
@@ -359,6 +375,8 @@
         private System.Windows.Forms.ToolStripButton openshp_toolStripButton1;
         private System.Windows.Forms.ToolStripButton movenode_toolStripButton;
         private System.Windows.Forms.ToolStripMenuItem delete_ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem wgs84To火星ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 火星ToWgs84ToolStripMenuItem;
     }
 }
 
