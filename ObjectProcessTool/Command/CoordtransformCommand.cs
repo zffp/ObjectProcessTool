@@ -35,9 +35,8 @@ namespace ObjectProcessTool.Command
 
         public void Execute(object sender, EventArgs e)
         {
-            LayerCtrlUserControl layerCtrlUserControl = GlobalContainer.GetInstance<LayerCtrlUserControl>("LayerCtrlUserControl");
 
-            ILayer layer = layerCtrlUserControl.GetSelectLayer();
+            ILayer layer = LayerManager.Instance.GetSelectLayer();
             if (layer is SObjectLayer)
             {
                 SObjectLayer osmLayer = layer as SObjectLayer;

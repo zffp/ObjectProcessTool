@@ -52,7 +52,7 @@ namespace ObjectProcessTool.Tool
                 if (envelope.Contains(node.Lon, node.Lat))
                 {
                     dragModelFlag = true;
-                }                
+                }
             }
             else
             {
@@ -64,7 +64,7 @@ namespace ObjectProcessTool.Tool
             if (dragModelFlag)
             {
                 var offsetx = worldPos.X - preCoordinate.X;
-                var offsety = worldPos.Y - preCoordinate.Y;        
+                var offsety = worldPos.Y - preCoordinate.Y;
                 Node node = selectEntity as Node;
 
                 node.Lat += offsety;
@@ -83,6 +83,8 @@ namespace ObjectProcessTool.Tool
             Point upPoint = imagePos.Location;
             if (dragModelFlag)
             {
+                selectEntity.Graph.MoveNode(selectEntity as Node);
+
                 mapBox.Refresh();
             }
             else if (downPoint == upPoint)

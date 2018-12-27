@@ -50,3 +50,4 @@ D:\projects\数据处理工具\ObjectProcessTool\ObjectProcessTool\SharpMap\obj\
 D:\projects\数据处理工具\ObjectProcessTool\ObjectProcessTool\SharpMap\obj\Debug\SharpMap.csproj.CopyComplete
 D:\projects\数据处理工具\ObjectProcessTool\ObjectProcessTool\SharpMap\obj\Debug\SharpMap.dll
 D:\projects\数据处理工具\ObjectProcessTool\ObjectProcessTool\SharpMap\obj\Debug\SharpMap.pdb
+D:\projects\数据处理工具\ObjectProcessTool\ObjectProcessTool\SharpMap\obj\Debug\SharpMap.csprojAssemblyReference.cache

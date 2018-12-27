@@ -2,6 +2,7 @@
 using ObjectProcessTool.Bil;
 using ObjectProcessTool.Command;
 using ObjectProcessTool.Layer;
+using ObjectProcessTool.MapControl;
 using ObjectProcessTool.Tool;
 using ObjectProcessTool.UI;
 using ObjectProcessTool.Util;
@@ -14,27 +15,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WeifenLuo.WinFormsUI.Docking;
 
 namespace ObjectProcessTool
 {
-    public partial class MainForm : Form
+    public partial class MainForm1 : Form
     {
-        public MainForm()
+        public MainForm1()
         {
             InitializeComponent();
 
+            GlobalContainer.Register("dockPanel", dockPanel1);
+
+            InitUI();
+
             Init();
+        }
+        MapForm mapForm;
+
+        private void InitUI()
+        {
+            mapForm = new MapForm();
+            mapForm.Show(dockPanel1);
+
+
+            LayerCtrlForm layerCtrlForm = new LayerCtrlForm();
+            layerCtrlForm.Show(dockPanel1, DockState.DockLeft);
+
+
+            StructureForm structureForm = new StructureForm();
+            structureForm.Show(dockPanel1, DockState.DockRight);
+
+           
+           
+
+            PropertyForm propertyForm = new PropertyForm();
+            //propertyForm.AutoHidePortion = 250 / (double)this.dockPanel1.Width;
+            propertyForm.Show(dockPanel1, DockState.DockRight);
+
+           
         }
         private void Init()
         {
 
-            //注册全局地图控件
-            GlobalContainer.Register("MapBox", objectMapBox1);
-            //注册全局地图
-            GlobalContainer.Register("Map", objectMapBox1.Map);
-
-            GlobalContainer.Register("LayerCtrlUserControl", layerCtrlUserControl1);
-            GlobalContainer.Register("PropertyUserControl", propertyUserControl1);
+           
 
             CommandManager.Instance.RelationCommand(openshp_ToolStripMenuItem, new OpenShpFileCommand());
             CommandManager.Instance.RelationCommand(openshp_toolStripButton1, new OpenShpFileCommand());
@@ -54,6 +78,8 @@ namespace ObjectProcessTool
 
 
 
+            ObjectMapBox objectMapBox1 = mapForm.GetMapBox();
+
             ToolManage.Instance.AddTool(new PanTool(objectMapBox1));
             ToolManage.Instance.AddTool(new QueryTool());
             ToolManage.Instance.AddTool(new MoveNodeTool());
@@ -68,7 +94,7 @@ namespace ObjectProcessTool
             objectMapBox1.MouseDoubleClick += ToolManage.Instance.MouseDoubleClick;
 
 
-            
+
 
         }
 
@@ -106,8 +132,7 @@ namespace ObjectProcessTool
 
         private void resetmap_toolStripButton_Click(object sender, EventArgs e)
         {
-            objectMapBox1.Map.ZoomToExtents();
-            objectMapBox1.Refresh();
+          
         }
 
 

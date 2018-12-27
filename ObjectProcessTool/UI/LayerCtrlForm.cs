@@ -1,32 +1,34 @@
-﻿using System;
+﻿using IronPython.Hosting;
+using Microsoft.Scripting.Hosting;
+using ObjectProcessTool.Bil;
+using ObjectProcessTool.Command;
+using ObjectProcessTool.Layer;
+using ObjectProcessTool.MapControl;
+using ObjectProcessTool.Model;
+using ObjectProcessTool.Util;
+using SharpMap;
+using SharpMap.Data;
+using SharpMap.Layers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SharpMap.Layers;
-using ObjectProcessTool.Layer;
-using IronPython.Hosting;
-using Microsoft.Scripting.Hosting;
-using ObjectProcessTool.Model;
-using ObjectProcessTool.Command;
-using ObjectProcessTool.Util;
-using SharpMap;
-using ObjectProcessTool.MapControl;
-using ObjectProcessTool.Bil;
-using SharpMap.Data;
 using WeifenLuo.WinFormsUI.Docking;
 
 namespace ObjectProcessTool.UI
 {
-    public partial class LayerCtrlUserControl : UserControl
+    public partial class LayerCtrlForm : DockContent
     {
-        public LayerCtrlUserControl()
+        public LayerCtrlForm()
         {
             InitializeComponent();
+
+            GlobalContainer.Register("LayerCtrlUserControl", this);
 
             InitTree();
 
@@ -117,19 +119,23 @@ namespace ObjectProcessTool.UI
         {
             try
             {
-                ScriptEngine pyEngine = Python.CreateEngine();
+               /* ScriptEngine pyEngine = Python.CreateEngine();
                 ScriptScope scope = pyEngine.CreateScope();
                 pyEngine.Execute(python_textBox.Text, scope);
-
+                */
 
                 ILayer layer = GetSelectLayer();
                 if (layer is SObjectLayer)
                 {
                     SObjectLayer sObjectLayer = layer as SObjectLayer;
-                    List<string> vns = scope.GetVariableNames().ToList();
-                    if (vns.Contains("convert"))
+
+                    Tuple<string, dynamic> tuple = ScriptManager.Instance.GetScriptFunction(python_textBox.Text);
+
+
+                    //List<string> vns = scope.GetVariableNames().ToList();
+                    if (tuple.Item1== "convert")
                     {
-                        dynamic convertFunction = scope.GetVariable("convert");
+                        dynamic convertFunction = tuple.Item2;// scope.GetVariable("convert");
                         foreach (SObject sObject in sObjectLayer.SObjects)
                         {
                             convertFunction(sObject);
@@ -137,14 +143,14 @@ namespace ObjectProcessTool.UI
 
                         MessageBox.Show("执行成功");
                     }
-                    else if (vns.Contains("select"))
+                    else if (tuple.Item1=="select")
                     {
 
                         Map map = GlobalContainer.GetInstance<Map>("Map");
                         ObjectMapBox mapBox = GlobalContainer.GetInstance<ObjectMapBox>("MapBox");
                         List<Entity> entities = new List<Entity>();
 
-                        dynamic selectFunction = scope.GetVariable("select");
+                        dynamic selectFunction = tuple.Item2;// scope.GetVariable("select");
                         foreach (SObject sObject in sObjectLayer.SObjects)
                         {
                             if (selectFunction(sObject))
@@ -195,12 +201,9 @@ namespace ObjectProcessTool.UI
 
         private void showattr_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             ILayer layer = GetSelectLayer();
             if (layer is VectorLayer)
-            {
-
-
+            {                
                 VectorLayer vectorLayer = layer as VectorLayer;
                 FeatureDataSet ds = new FeatureDataSet();
                 vectorLayer.ExecuteIntersectionQuery(vectorLayer.Envelope, ds);

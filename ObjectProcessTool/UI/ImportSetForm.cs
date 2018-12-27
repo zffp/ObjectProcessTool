@@ -1,5 +1,6 @@
 ﻿using IronPython.Hosting;
 using Microsoft.Scripting.Hosting;
+using ObjectProcessTool.Bil;
 using ObjectProcessTool.Layer;
 using ObjectProcessTool.Util;
 using SharpMap;
@@ -21,7 +22,19 @@ namespace ObjectProcessTool.UI
         public ImportSetForm()
         {
             InitializeComponent();
+
+
+            LoadScript();
         }
+
+        /// <summary>
+        /// 载入脚本
+        /// </summary>
+        public void LoadScript()
+        {
+            comboBox1.Items.AddRange(ScriptManager.Instance.GetAllScript());
+        }
+
         public void SetImportLayerName(string name)
         {
             importlayer_textBox.Text = name;
@@ -33,20 +46,21 @@ namespace ObjectProcessTool.UI
         dynamic convertFunction = null;
         private void button2_Click(object sender, EventArgs e)
         {
-            try
-            {
-                ScriptEngine pyEngine = Python.CreateEngine();
-                ScriptScope scope = pyEngine.CreateScope();
-                pyEngine.Execute(python_textBox.Text, scope);
+            Tuple<string, dynamic> tuple= ScriptManager.Instance.GetScriptFunction(python_textBox.Text);
 
-                convertFunction = scope.GetVariable("convert");
+
+            if(tuple!=null&&tuple.Item1== "convert")
+            {
+                convertFunction = tuple.Item2;
 
                 MessageBox.Show("验证成功");
             }
-            catch (Exception ee)
+            else
             {
-                MessageBox.Show("验证失败");
+                MessageBox.Show("验证失败,只支持convert函数");
             }
+
+           
         }
         /// <summary>
         /// 获取动态转换函数
@@ -85,6 +99,23 @@ namespace ObjectProcessTool.UI
         {
             Map map = GlobalContainer.GetInstance<Map>("Map");
             return map.Layers.Where(layer => layer is SObjectLayer).Select(r => r.LayerName).ToList();
+        }
+
+        private void save_button_Click(object sender, EventArgs e)
+        {
+            ScriptManager.Instance.SaveScript(comboBox1.Text, python_textBox.Text);
+            string text = comboBox1.Text;
+            comboBox1.Items.Clear();
+            comboBox1.Items.AddRange(ScriptManager.Instance.GetAllScript());
+            comboBox1.Text = text;
+            MessageBox.Show("保存成功！");
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string scriptContent = ScriptManager.Instance.ReadScript(comboBox1.Text);
+
+            python_textBox.Text = scriptContent;
         }
     }
 }

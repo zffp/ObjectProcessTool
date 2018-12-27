@@ -121,13 +121,17 @@ namespace ObjectProcessTool.Model
         {
             bool isArea = Convert.ToBoolean(GetTagValue("area", false));
 
-            Coordinate[] coordinates = this.Nodes.Select(r => new Coordinate(r.Lon, r.Lat)).ToArray();
+
             if (isArea)
             {
-                this.Geometry = geometryFactory.CreatePolygon(coordinates) as Geometry;
+
+                var coordinates = this.Nodes.Select(r => new Coordinate(r.Lon, r.Lat)).ToList();
+                coordinates.Add(coordinates[0]);
+                this.Geometry = geometryFactory.CreatePolygon(coordinates.ToArray()) as Geometry;
             }
             else
             {
+                Coordinate[] coordinates = this.Nodes.Select(r => new Coordinate(r.Lon, r.Lat)).ToArray();
                 this.Geometry = geometryFactory.CreateLineString(coordinates) as Geometry;
             }
 

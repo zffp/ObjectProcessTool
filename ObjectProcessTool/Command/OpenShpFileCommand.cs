@@ -44,8 +44,8 @@ namespace ObjectProcessTool.Command
 
             VectorLayer vectorLayer = new VectorLayer(LayerName);
             vectorLayer.DataSource = shapeFile;
-            vectorLayer.Style.Line = new Pen(Color.FromArgb(205, 186, 93), 2f);
-            vectorLayer.Style.Fill = new SolidBrush(Color.FromArgb(80, 0, 205, 56));
+            vectorLayer.Style.Line = new Pen(IDGenerator.GetRandomColor(), 2f);
+            vectorLayer.Style.Fill = new SolidBrush(IDGenerator.GetRandomColor());
 
             LayerManager.Instance.AddLayer(vectorLayer);           
         }       

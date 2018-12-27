@@ -35,7 +35,7 @@ namespace ObjectProcessTool.Layer
             objectMapBox.Refresh();
 
 
-            LayerCtrlUserControl layerCtrlUserControl = GlobalContainer.GetInstance<LayerCtrlUserControl>("LayerCtrlUserControl");
+            LayerCtrlForm layerCtrlUserControl = GlobalContainer.GetInstance<LayerCtrlForm>("LayerCtrlUserControl");
             layerCtrlUserControl.AddLayer(layer);
         }
         public void RemoveLayer(ILayer layer)
@@ -43,7 +43,7 @@ namespace ObjectProcessTool.Layer
             map.Layers.Remove(layer);
             objectMapBox.Refresh();
 
-            LayerCtrlUserControl layerCtrlUserControl = GlobalContainer.GetInstance<LayerCtrlUserControl>("LayerCtrlUserControl");
+            LayerCtrlForm layerCtrlUserControl = GlobalContainer.GetInstance<LayerCtrlForm>("LayerCtrlUserControl");
             layerCtrlUserControl.RemoveLayer(layer);
         }
         public void SetLayerVisible(string layerName, bool visible)
@@ -55,6 +55,12 @@ namespace ObjectProcessTool.Layer
 
                 objectMapBox.Refresh();
             }
+        }
+        public ILayer GetSelectLayer()
+        {
+            LayerCtrlForm layerCtrlUserControl = GlobalContainer.GetInstance<LayerCtrlForm>("LayerCtrlUserControl");
+
+            return layerCtrlUserControl.GetSelectLayer();
         }
     }
 }

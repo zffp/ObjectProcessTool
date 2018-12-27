@@ -51,7 +51,7 @@ namespace ObjectProcessTool.Layer
         {
             var envelope = map.Envelope;
 
-            foreach (Entity entity in Graph.EntityMap.Where(r => r.Value is Way).Select(r => r.Value))
+            foreach (Entity entity in Graph.EntityMap.Where(r => r.Value is Way && r.Value.IsObject).Select(r => r.Value))
             {
                 if (envelope.Intersects(entity.Envelope))
                 {

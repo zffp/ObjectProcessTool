@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Common.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
@@ -87,8 +90,12 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.1.6643.41644, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WeifenLuo.WinFormsUI.Docking.2.1.0\lib\net20\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bil\ScriptManager.cs" />
     <Compile Include="Command\AddAttrCommand.cs" />
     <Compile Include="Command\CommandManager.cs" />
     <Compile Include="Command\DeleteSobjectCommand.cs" />
@@ -103,6 +110,12 @@
     <Compile Include="Event\EventNameList.cs" />
     <Compile Include="Layer\LayerManager.cs" />
     <Compile Include="Layer\SObjectLayer.cs" />
+    <Compile Include="MainForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm1.Designer.cs">
+      <DependentUpon>MainForm1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\DynamicPropertyDescriptor.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\Graph.cs" />
@@ -113,12 +126,6 @@
     <Compile Include="Model\Way.cs" />
     <Compile Include="Tool\AbstractTool.cs" />
     <Compile Include="Tool\ITool.cs" />
-    <Compile Include="MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="MapControl\ObjectMapBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -140,6 +147,12 @@
     <Compile Include="UI\AddAttrForm.Designer.cs">
       <DependentUpon>AddAttrForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\AttributeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AttributeForm.Designer.cs">
+      <DependentUpon>AttributeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\IDForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,11 +165,23 @@
     <Compile Include="UI\ImportSetForm.Designer.cs">
       <DependentUpon>ImportSetForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\LayerCtrlUserControl.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="UI\LayerCtrlForm.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\LayerCtrlUserControl.Designer.cs">
-      <DependentUpon>LayerCtrlUserControl.cs</DependentUpon>
+    <Compile Include="UI\LayerCtrlForm.Designer.cs">
+      <DependentUpon>LayerCtrlForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\MapForm.Designer.cs">
+      <DependentUpon>MapForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PropertyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PropertyForm.Designer.cs">
+      <DependentUpon>PropertyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\PropertyUserControl.cs">
       <SubType>UserControl</SubType>
@@ -164,12 +189,18 @@
     <Compile Include="UI\PropertyUserControl.Designer.cs">
       <DependentUpon>PropertyUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\StructureForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\StructureForm.Designer.cs">
+      <DependentUpon>StructureForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Util\Coordtransform.cs" />
     <Compile Include="Util\GlobalContainer.cs" />
     <Compile Include="Util\IDGenerator.cs" />
     <Compile Include="Util\Singleton.cs" />
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm1.resx">
+      <DependentUpon>MainForm1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -186,18 +217,31 @@
     <EmbeddedResource Include="UI\AddAttrForm.resx">
       <DependentUpon>AddAttrForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\AttributeForm.resx">
+      <DependentUpon>AttributeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\IDForm.resx">
       <DependentUpon>IDForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ImportSetForm.resx">
       <DependentUpon>ImportSetForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\LayerCtrlUserControl.resx">
-      <DependentUpon>LayerCtrlUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="UI\LayerCtrlForm.resx">
+      <DependentUpon>LayerCtrlForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MapForm.resx">
+      <DependentUpon>MapForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PropertyForm.resx">
+      <DependentUpon>PropertyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\PropertyUserControl.resx">
       <DependentUpon>PropertyUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\StructureForm.resx">
+      <DependentUpon>StructureForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

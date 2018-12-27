@@ -1,6 +1,9 @@
 ﻿using GeoAPI.Geometries;
+using SharpMap;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +17,28 @@ namespace ObjectProcessTool.Model
         public Relation(long id) : base(id, "Relation")
         {
             Members = new List<Member>();
+        }
+
+        private static Brush outpolygonBrush = new SolidBrush(Color.FromArgb(100, 50, 205, 50));
+
+        public override void RenderEntity(Graphics g, Map map)
+        {
+            var gp = new GraphicsPath(FillMode.Alternate);
+            foreach (Member member in Members)
+            {
+                if (member.RefEntity is Way)
+                {
+                    Way way = member.RefEntity as Way;
+
+                    Coordinate[] coordinates = way.Geometry.Coordinates;
+
+                    gp.AddPolygon(GeoAPIEx.TransformToImage(coordinates, map));
+                }
+            }
+
+            g.FillPath(outpolygonBrush, gp);
+
+
         }
 
         public override void CalculationEnvelope()
@@ -36,12 +61,7 @@ namespace ObjectProcessTool.Model
                     envelope = envelope.ExpandedBy(member.RefEntity.Envelope);
                 }
             }
-
             this.Envelope = envelope;
-
-
-
-
         }
     }
 }

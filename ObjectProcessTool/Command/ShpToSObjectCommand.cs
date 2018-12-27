@@ -21,9 +21,8 @@ namespace ObjectProcessTool.Command
 
         public void Execute(object sender, EventArgs e)
         {
-            LayerCtrlUserControl layerCtrlUserControl = GlobalContainer.GetInstance<LayerCtrlUserControl>("LayerCtrlUserControl");
-
-            ILayer layer = layerCtrlUserControl.GetSelectLayer();
+         
+            ILayer layer = LayerManager.Instance.GetSelectLayer();
             if (layer != null && layer is VectorLayer)
             {
                 if (!ImportSetting(layer))
@@ -42,7 +41,7 @@ namespace ObjectProcessTool.Command
                 {
                     foreach (FeatureDataRow dataRow in ds.Tables[0].Rows)
                     {
-                        if (dataRow.Geometry == null)
+                        if (dataRow.Geometry == null || dataRow.Geometry is MultiLineString)
                         {
                             continue;
                         }

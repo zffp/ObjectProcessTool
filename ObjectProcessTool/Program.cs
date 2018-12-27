@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ObjectProcessTool.Bil;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,9 +15,11 @@ namespace ObjectProcessTool
         [STAThread]
         static void Main()
         {
+            ScriptManager.Instance.Init();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new MainForm1());
         }
     }
 }

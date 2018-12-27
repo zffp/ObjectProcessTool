@@ -59,6 +59,7 @@ namespace ObjectProcessTool.Model
 
 
             Node node = new Node(IDGenerator.CrateId(), point.Y, point.X);
+            node.Tags = tags;
             node.Geometry = point;
             node.Tags.Add("isObject", true);
             this.AddEntity(node);
@@ -86,9 +87,9 @@ namespace ObjectProcessTool.Model
 
         public Entity AddPolygon(Polygon polygon, Dictionary<string, object> tags)
         {
-            if (polygon.NumGeometries == 1)
+            if (polygon.InteriorRings.Length == 0)
             {
-                IGeometry geometry = polygon.GetGeometryN(0);
+                IGeometry geometry = polygon.Shell;
                 Way way = CreateWay(tags, geometry, true);
                 this.AddEntity(way);
 
@@ -100,11 +101,21 @@ namespace ObjectProcessTool.Model
                 relation.Geometry = polygon;
                 relation.Tags = tags;
                 relation.Tags.Add("isObject", true);
-                for (int i = 0; i < polygon.NumGeometries; i++)
+
+
+
+                Way way = CreateWay(new Dictionary<string, object>(), polygon.Shell, false);
+                Member member = new Member("Way", "outer");
+                member.RefEntity = way;
+                relation.Members.Add(member);
+                this.AddEntity(way);
+
+                for (int i = 0; i < polygon.Holes.Length; i++)
                 {
-                    IGeometry geometry = polygon.GetGeometryN(i);
-                    Way way = CreateWay(new Dictionary<string, object>(), geometry, false);
-                    Member member = new Member("Way", i == 0 ? "outer" : "innter");
+                    IGeometry geometry = polygon.Holes[i];
+                    way = CreateWay(new Dictionary<string, object>(), geometry, false);
+
+                    member = new Member("Way", "innter");
                     member.RefEntity = way;
                     relation.Members.Add(member);
                     this.AddEntity(way);
@@ -115,6 +126,9 @@ namespace ObjectProcessTool.Model
             }
 
         }
+
+
+
         public Entity AddMPolygon(MultiPolygon polygon, Dictionary<string, object> tags)
         {
             Relation relation = new Relation(IDGenerator.CrateId());
@@ -216,6 +230,25 @@ namespace ObjectProcessTool.Model
                         {
                             this.EntityMap.Remove(node.Id);
                         }
+                    }
+                }
+            }
+        }
+
+        public void MoveNode(Node node)
+        {
+            node.CalculationEnvelope();
+
+            if (ParentWays.ContainsKey(node.Id))
+            {
+                List<long> wayIds = ParentWays[node.Id];
+
+                foreach (long wid in wayIds)
+                {
+                    Way way = EntityMap[wid] as Way;
+                    if (way != null)
+                    {
+                        way.CalculationEnvelope();
                     }
                 }
             }

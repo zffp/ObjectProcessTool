@@ -27,9 +27,7 @@ namespace ObjectProcessTool.Command
         double tolerance = 0.0000006;
         public void Execute(object sender, EventArgs e)
         {
-            LayerCtrlUserControl layerCtrlUserControl = GlobalContainer.GetInstance<LayerCtrlUserControl>("LayerCtrlUserControl");
-
-            ILayer layer = layerCtrlUserControl.GetSelectLayer();
+            ILayer layer = LayerManager.Instance.GetSelectLayer();
             if (layer is SObjectLayer)
             {
                 SObjectLayer osmLayer = layer as SObjectLayer;
@@ -55,7 +53,33 @@ namespace ObjectProcessTool.Command
                 {
                     Way way = entity as Way;
 
-                    way.Nodes = way.Nodes.Distinct().ToList();
+                    List<Node> result = new List<Node>();
+                    Node preNode = null;
+                    foreach (Node node in way.Nodes)
+                    {
+                        if (preNode != null)
+                        {
+                            if (preNode.Id != node.Id)
+                            {
+                                result.Add(node);
+                            }
+                        }
+                        else
+                        {
+                            result.Add(node);
+                        }
+                        preNode = node;
+                    }
+
+                    if (way.IsArea)
+                    {
+                        if (result[0].Id != result[result.Count - 1].Id)
+                        {
+                            result.Add(result[0]);
+                        }
+                    }
+
+                    way.Nodes = result;
                 }
 
                 MessageBox.Show("完成：" + graph.EntityMap.Count);

@@ -175,7 +175,7 @@ namespace GeoAPI.Geometries
         /// <param name="vertices">The array of coordinates</param>
         /// <param name="map">The map that defines the affine coordinate transformation</param>
         /// <returns>The array of <see cref="PointF"/>s</returns>
-        private static PointF[] TransformToImage(Coordinate[] vertices, Map map)
+        public static PointF[] TransformToImage(Coordinate[] vertices, Map map)
         {
             var v = new PointF[vertices.Length];
             for (var i = 0; i < vertices.Length; i++)

@@ -88,7 +88,14 @@ namespace ObjectProcessTool.Model
             }
             return defaultValue;
         }
-
+        [JsonIgnore]
+        public bool IsArea
+        {
+            get
+            {
+                return Convert.ToBoolean(GetTagValue("area", false)); ;
+            }
+        }
         public int GetGeoType()
         {
             if (this is Node)
@@ -120,6 +127,8 @@ namespace ObjectProcessTool.Model
         {
             this.Envelope = new Envelope();
         }
+
+
 
         #region ICustomTypeDescriptor
 

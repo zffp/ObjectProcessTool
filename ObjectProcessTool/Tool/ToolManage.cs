@@ -87,6 +87,8 @@ namespace ObjectProcessTool.Tool
 
         public void MouseMove(Coordinate worldPos, MouseEventArgs imagePos)
         {
+            ObjectMapBox mapbox = GlobalContainer.GetInstance<ObjectMapBox>("MapBox");
+            mapbox.Focus();
             if (curTool != null)
                 curTool.MouseMove(worldPos, imagePos);
         }
