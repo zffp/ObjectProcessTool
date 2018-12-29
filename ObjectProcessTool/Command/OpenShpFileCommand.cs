@@ -46,7 +46,7 @@ namespace ObjectProcessTool.Command
             vectorLayer.DataSource = shapeFile;
             vectorLayer.Style.Line = new Pen(IDGenerator.GetRandomColor(), 2f);
             vectorLayer.Style.Fill = new SolidBrush(IDGenerator.GetRandomColor());
-
+            vectorLayer.Style.PointColor= new SolidBrush(IDGenerator.GetRandomColor());
             LayerManager.Instance.AddLayer(vectorLayer);           
         }       
     }

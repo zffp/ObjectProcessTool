@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GeoAPI.Geometries;
+using ObjectProcessTool.Bil;
 using ObjectProcessTool.Event;
 using ObjectProcessTool.Layer;
 using ObjectProcessTool.MapControl;
@@ -93,14 +94,10 @@ namespace ObjectProcessTool.Tool
                 map.Decorations.Clear();
                 selectEntity = QueryNode(upPoint.X, upPoint.Y);
 
-                PropertyUserControl propertyUserControl = GlobalContainer.GetInstance<PropertyUserControl>("PropertyUserControl");
-                propertyUserControl.SetFeatureData(selectEntity);
 
-                if (selectEntity != null)
-                {
-                    map.Decorations.Add(selectEntity);
-                }
-                mapBox.Refresh();
+                QueryManager.Instance.SetSelectEntity(selectEntity);
+
+              
             }
             dragModelFlag = false;
             EventManage.Instance.FireEvent(EventNameList.END_DARGMAP, worldPos, imagePos, mapBox, true);

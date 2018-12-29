@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GeoAPI.Geometries;
+using ObjectProcessTool.Bil;
 using ObjectProcessTool.Layer;
 using ObjectProcessTool.MapControl;
 using ObjectProcessTool.Model;
@@ -41,8 +42,7 @@ namespace ObjectProcessTool.Tool
         public override void MouseUp(Coordinate worldPos, MouseEventArgs imagePos)
         {
             Map map = GlobalContainer.GetInstance<Map>("Map");
-            ObjectMapBox mapBox = GlobalContainer.GetInstance<ObjectMapBox>("MapBox");
-
+            
 
             Point upPoint = imagePos.Location;
             if (downPoint == upPoint)
@@ -87,14 +87,9 @@ namespace ObjectProcessTool.Tool
                         }
                     }
                 }
-                PropertyUserControl propertyUserControl = GlobalContainer.GetInstance<PropertyUserControl>("PropertyUserControl");
-                propertyUserControl.SetFeatureData(entity);
-                map.Decorations.Clear();
-                if (entity != null)
-                {
-                    map.Decorations.Add(entity);
-                }
-                mapBox.Refresh();
+
+                QueryManager.Instance.SetSelectEntity(entity);
+               
             }
         }
     }

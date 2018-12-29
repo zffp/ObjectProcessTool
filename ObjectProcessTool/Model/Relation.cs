@@ -1,4 +1,5 @@
 ﻿using GeoAPI.Geometries;
+using Newtonsoft.Json;
 using SharpMap;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace ObjectProcessTool.Model
 {
     public class Relation : Entity
     {
+        [JsonProperty("members")]
         public List<Member> Members { get; set; }
 
         public Relation(long id) : base(id, "Relation")

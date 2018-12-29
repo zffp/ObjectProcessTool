@@ -42,7 +42,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(747, 54);
+            this.button2.Location = new System.Drawing.Point(567, 73);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 28);
             this.button2.TabIndex = 1;
@@ -53,7 +53,7 @@
             // button1
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(828, 54);
+            this.button1.Location = new System.Drawing.Point(648, 73);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 28);
             this.button1.TabIndex = 0;
@@ -62,10 +62,10 @@
             // 
             // python_textBox
             // 
-            this.python_textBox.Location = new System.Drawing.Point(12, 86);
+            this.python_textBox.Location = new System.Drawing.Point(11, 121);
             this.python_textBox.Multiline = true;
             this.python_textBox.Name = "python_textBox";
-            this.python_textBox.Size = new System.Drawing.Size(891, 385);
+            this.python_textBox.Size = new System.Drawing.Size(713, 385);
             this.python_textBox.TabIndex = 1;
             // 
             // tag_comboBox
@@ -88,7 +88,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 59);
+            this.label2.Location = new System.Drawing.Point(18, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 15);
             this.label2.TabIndex = 4;
@@ -115,7 +115,7 @@
             // 
             this.comboBox1.Font = new System.Drawing.Font("宋体", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(92, 54);
+            this.comboBox1.Location = new System.Drawing.Point(91, 74);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(300, 26);
@@ -124,7 +124,7 @@
             // 
             // save_button
             // 
-            this.save_button.Location = new System.Drawing.Point(678, 54);
+            this.save_button.Location = new System.Drawing.Point(498, 73);
             this.save_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.save_button.Name = "save_button";
             this.save_button.Size = new System.Drawing.Size(63, 28);
@@ -137,7 +137,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(916, 536);
+            this.ClientSize = new System.Drawing.Size(742, 532);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.save_button);
             this.Controls.Add(this.importlayer_textBox);
@@ -148,6 +148,9 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.python_textBox);
             this.Controls.Add(this.button1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ImportSetForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "导入设置";

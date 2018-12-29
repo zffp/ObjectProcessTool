@@ -102,11 +102,19 @@ namespace ObjectProcessTool.Model
                 relation.Tags = tags;
                 relation.Tags.Add("isObject", true);
 
+                var mutags = new Dictionary<string, object>();
+
+                mutags.Add("type", new { key = "type", value = "multipolygon" });
+
+
+                relation.Tags.Add("tags", mutags);
+
 
 
                 Way way = CreateWay(new Dictionary<string, object>(), polygon.Shell, false);
                 Member member = new Member("Way", "outer");
                 member.RefEntity = way;
+                member.RefId = way.Id;
                 relation.Members.Add(member);
                 this.AddEntity(way);
 
@@ -115,7 +123,7 @@ namespace ObjectProcessTool.Model
                     IGeometry geometry = polygon.Holes[i];
                     way = CreateWay(new Dictionary<string, object>(), geometry, false);
 
-                    member = new Member("Way", "innter");
+                    member = new Member("Way", "inner");
                     member.RefEntity = way;
                     relation.Members.Add(member);
                     this.AddEntity(way);
@@ -252,6 +260,23 @@ namespace ObjectProcessTool.Model
                     }
                 }
             }
+        }
+
+        public List<Entity> GetRelationByWid(long wid)
+        {
+            List<Entity> result = new List<Entity>();
+            if (ParentRels.ContainsKey(wid))
+            {
+                List<long> ridlist = ParentRels[wid];
+                foreach (long rid in ridlist)
+                {
+                    if (EntityMap.ContainsKey(rid))
+                    {
+                        result.Add(EntityMap[rid]);
+                    }
+                }
+            }
+            return result;
         }
     }
 }
