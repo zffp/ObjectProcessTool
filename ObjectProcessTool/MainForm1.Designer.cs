@@ -32,6 +32,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openshp_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openSObject_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.savesobject_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exit_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.转换ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +53,8 @@
             this.query_toolStripButton = new System.Windows.Forms.ToolStripButton();
             this.movenode_toolStripButton = new System.Windows.Forms.ToolStripButton();
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
-            this.openSObject_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.导入引擎ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -77,7 +79,9 @@
             this.文件ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openshp_ToolStripMenuItem,
             this.openSObject_ToolStripMenuItem,
+            this.导入引擎ToolStripMenuItem,
             this.savesobject_ToolStripMenuItem,
+            this.设置ToolStripMenuItem,
             this.exit_ToolStripMenuItem});
             this.文件ToolStripMenuItem.Name = "文件ToolStripMenuItem";
             this.文件ToolStripMenuItem.Size = new System.Drawing.Size(51, 24);
@@ -88,6 +92,12 @@
             this.openshp_ToolStripMenuItem.Name = "openshp_ToolStripMenuItem";
             this.openshp_ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.openshp_ToolStripMenuItem.Text = "打开SHP";
+            // 
+            // openSObject_ToolStripMenuItem
+            // 
+            this.openSObject_ToolStripMenuItem.Name = "openSObject_ToolStripMenuItem";
+            this.openSObject_ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.openSObject_ToolStripMenuItem.Text = "打开SObject";
             // 
             // savesobject_ToolStripMenuItem
             // 
@@ -113,7 +123,7 @@
             // delete_ToolStripMenuItem
             // 
             this.delete_ToolStripMenuItem.Name = "delete_ToolStripMenuItem";
-            this.delete_ToolStripMenuItem.Size = new System.Drawing.Size(114, 26);
+            this.delete_ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.delete_ToolStripMenuItem.Text = "删除";
             // 
             // 操作ToolStripMenuItem
@@ -131,31 +141,31 @@
             // addattr_ToolStripMenuItem
             // 
             this.addattr_ToolStripMenuItem.Name = "addattr_ToolStripMenuItem";
-            this.addattr_ToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.addattr_ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.addattr_ToolStripMenuItem.Text = "添加属性";
             // 
             // removeNode_ToolStripMenuItem
             // 
             this.removeNode_ToolStripMenuItem.Name = "removeNode_ToolStripMenuItem";
-            this.removeNode_ToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.removeNode_ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.removeNode_ToolStripMenuItem.Text = "去除重复点";
             // 
             // showtext_ToolStripMenuItem
             // 
             this.showtext_ToolStripMenuItem.Name = "showtext_ToolStripMenuItem";
-            this.showtext_ToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.showtext_ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.showtext_ToolStripMenuItem.Text = "显示隐藏注记";
             // 
             // wgs84To火星ToolStripMenuItem
             // 
             this.wgs84To火星ToolStripMenuItem.Name = "wgs84To火星ToolStripMenuItem";
-            this.wgs84To火星ToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.wgs84To火星ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.wgs84To火星ToolStripMenuItem.Text = "Wgs84To火星";
             // 
             // 火星ToWgs84ToolStripMenuItem
             // 
             this.火星ToWgs84ToolStripMenuItem.Name = "火星ToWgs84ToolStripMenuItem";
-            this.火星ToWgs84ToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.火星ToWgs84ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.火星ToWgs84ToolStripMenuItem.Text = "火星ToWgs84";
             // 
             // 关于ToolStripMenuItem
@@ -257,11 +267,17 @@
             this.dockPanel1.Size = new System.Drawing.Size(1229, 735);
             this.dockPanel1.TabIndex = 6;
             // 
-            // openSObject_ToolStripMenuItem
+            // 导入引擎ToolStripMenuItem
             // 
-            this.openSObject_ToolStripMenuItem.Name = "openSObject_ToolStripMenuItem";
-            this.openSObject_ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.openSObject_ToolStripMenuItem.Text = "打开SObject";
+            this.导入引擎ToolStripMenuItem.Name = "导入引擎ToolStripMenuItem";
+            this.导入引擎ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.导入引擎ToolStripMenuItem.Text = "导入引擎";
+            // 
+            // 设置ToolStripMenuItem
+            // 
+            this.设置ToolStripMenuItem.Name = "设置ToolStripMenuItem";
+            this.设置ToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.设置ToolStripMenuItem.Text = "设置";
             // 
             // MainForm1
             // 
@@ -315,6 +331,8 @@
         private System.Windows.Forms.ToolStripMenuItem 火星ToWgs84ToolStripMenuItem;
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel1;
         private System.Windows.Forms.ToolStripMenuItem openSObject_ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 导入引擎ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 设置ToolStripMenuItem;
     }
 }
 

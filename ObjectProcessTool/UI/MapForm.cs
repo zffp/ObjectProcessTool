@@ -1,4 +1,5 @@
-﻿using ObjectProcessTool.MapControl;
+﻿using ObjectProcessTool.Layer;
+using ObjectProcessTool.MapControl;
 using ObjectProcessTool.Util;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace ObjectProcessTool.UI
 
         private void MapForm_Load(object sender, EventArgs e)
         {
-
+            //objectMapBox1.Map.Layers.Add(new GeoSotLayer());
         }
         public ObjectMapBox GetMapBox()
         {

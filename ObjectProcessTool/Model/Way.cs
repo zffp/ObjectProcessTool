@@ -71,6 +71,7 @@ namespace ObjectProcessTool.Model
             {
                 //绘制线
                 g.DrawLines(linePen, ptList.ToArray());
+
             }
         }
         public override void Render(Graphics g, Map map)

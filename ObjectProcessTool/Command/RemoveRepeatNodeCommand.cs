@@ -24,7 +24,7 @@ namespace ObjectProcessTool.Command
 
 
 
-        double tolerance = 0.0000006;
+        double tolerance = 0.00000006;
         public void Execute(object sender, EventArgs e)
         {
             ILayer layer = LayerManager.Instance.GetSelectLayer();
@@ -80,6 +80,16 @@ namespace ObjectProcessTool.Command
                     }
 
                     way.Nodes = result;
+                }
+                foreach (Entity entity in entities)
+                {
+                    Way way = entity as Way;
+                    if (way.Nodes.Count <= 1)
+                    {
+                        //构不成线    //移除对象
+                        osmLayer.SObjects.Remove(way.SObject);
+                        graph.RemvoeEntity(way);                      
+                    }
                 }
 
                 MessageBox.Show("完成：" + graph.EntityMap.Count);

@@ -40,6 +40,7 @@
             this.removeLayer_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.converSObject_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showattr_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addworkflow_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -131,30 +132,38 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.removeLayer_ToolStripMenuItem,
             this.converSObject_ToolStripMenuItem,
-            this.showattr_ToolStripMenuItem});
+            this.showattr_ToolStripMenuItem,
+            this.addworkflow_ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(167, 76);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 128);
             // 
             // removeLayer_ToolStripMenuItem
             // 
             this.removeLayer_ToolStripMenuItem.Name = "removeLayer_ToolStripMenuItem";
-            this.removeLayer_ToolStripMenuItem.Size = new System.Drawing.Size(166, 24);
+            this.removeLayer_ToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.removeLayer_ToolStripMenuItem.Text = "移除";
             this.removeLayer_ToolStripMenuItem.Click += new System.EventHandler(this.removeLayer_ToolStripMenuItem_Click);
             // 
             // converSObject_ToolStripMenuItem
             // 
             this.converSObject_ToolStripMenuItem.Name = "converSObject_ToolStripMenuItem";
-            this.converSObject_ToolStripMenuItem.Size = new System.Drawing.Size(166, 24);
+            this.converSObject_ToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.converSObject_ToolStripMenuItem.Text = "转换SObject";
             this.converSObject_ToolStripMenuItem.Click += new System.EventHandler(this.converSObject_ToolStripMenuItem_Click);
             // 
             // showattr_ToolStripMenuItem
             // 
             this.showattr_ToolStripMenuItem.Name = "showattr_ToolStripMenuItem";
-            this.showattr_ToolStripMenuItem.Size = new System.Drawing.Size(166, 24);
+            this.showattr_ToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.showattr_ToolStripMenuItem.Text = "查看属性";
             this.showattr_ToolStripMenuItem.Click += new System.EventHandler(this.showattr_ToolStripMenuItem_Click);
+            // 
+            // addworkflow_ToolStripMenuItem
+            // 
+            this.addworkflow_ToolStripMenuItem.Name = "addworkflow_ToolStripMenuItem";
+            this.addworkflow_ToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.addworkflow_ToolStripMenuItem.Text = "添加到批处理";
+            this.addworkflow_ToolStripMenuItem.Click += new System.EventHandler(this.addworkflow_ToolStripMenuItem_Click);
             // 
             // LayerCtrlForm
             // 
@@ -189,5 +198,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button save_button;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripMenuItem addworkflow_ToolStripMenuItem;
     }
 }

@@ -39,8 +39,6 @@ namespace ObjectProcessTool.Model
             }
 
             g.FillPath(outpolygonBrush, gp);
-
-
         }
 
         public override void CalculationEnvelope()

@@ -6,6 +6,7 @@ using ObjectProcessTool.MapControl;
 using ObjectProcessTool.Tool;
 using ObjectProcessTool.UI;
 using ObjectProcessTool.Util;
+using SharpMap;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,6 +38,10 @@ namespace ObjectProcessTool
         {
             mapForm = new MapForm();
             mapForm.Show(dockPanel1);
+
+
+            WorkflowForm workflow = new WorkflowForm();
+            workflow.Show(dockPanel1);
 
 
             LayerCtrlForm layerCtrlForm = new LayerCtrlForm();
@@ -132,7 +137,11 @@ namespace ObjectProcessTool
 
         private void resetmap_toolStripButton_Click(object sender, EventArgs e)
         {
-          
+            Map map = GlobalContainer.GetInstance<Map>("Map");
+            ObjectMapBox mapBox = GlobalContainer.GetInstance<ObjectMapBox>("MapBox");
+
+            map.ZoomToExtents();
+            mapBox.Refresh();
         }
 
 

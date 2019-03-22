@@ -34,6 +34,7 @@
             // objectMapBox1
             // 
             this.objectMapBox1.ActiveTool = ObjectProcessTool.MapControl.ObjectMapBox.Tools.None;
+            this.objectMapBox1.BackColor = System.Drawing.Color.White;
             this.objectMapBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.objectMapBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.objectMapBox1.FineZoomFactor = 10D;

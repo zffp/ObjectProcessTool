@@ -35,6 +35,9 @@
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>data_transport_72px_14870_easyicon.net.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Common.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
@@ -109,8 +112,18 @@
     <Compile Include="Command\CoordtransformCommand.cs" />
     <Compile Include="Event\EventManage.cs" />
     <Compile Include="Event\EventNameList.cs" />
+    <Compile Include="GeoSOT\CellSize.cs" />
+    <Compile Include="GeoSOT\GeoSOTOptions.cs" />
+    <Compile Include="GeoSOT\LngLat.cs" />
+    <Compile Include="GeoSOT\LngLatBbox.cs" />
+    <Compile Include="GeoSOT\LngLatSegments.cs" />
+    <Compile Include="GeoSOT\Morton.cs" />
+    <Compile Include="GeoSOT\Tile.cs" />
+    <Compile Include="GeoSOT\TileUtils.cs" />
+    <Compile Include="Layer\GeoSotLayer.cs" />
     <Compile Include="Layer\LayerManager.cs" />
     <Compile Include="Layer\SObjectLayer.cs" />
+    <Compile Include="Layer\WorkflowLayer.cs" />
     <Compile Include="MainForm1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,11 +133,22 @@
     <Compile Include="Model\DynamicPropertyDescriptor.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\Graph.cs" />
+    <Compile Include="Model\LineDecoration.cs" />
     <Compile Include="Model\Member.cs" />
     <Compile Include="Model\Node.cs" />
     <Compile Include="Model\Relation.cs" />
     <Compile Include="Model\SObject.cs" />
     <Compile Include="Model\Way.cs" />
+    <Compile Include="ProcessTool\ProcessToolManage.cs" />
+    <Compile Include="Workflow\DataType.cs" />
+    <Compile Include="ProcessTool\IProcessTool.cs" />
+    <Compile Include="Workflow\ShpData.cs" />
+    <Compile Include="Workflow\SObjectData.cs" />
+    <Compile Include="Workflow\TaskData.cs" />
+    <Compile Include="ProcessTool\ToolParameter.cs" />
+    <Compile Include="Workflow\ValueData.cs" />
+    <Compile Include="Workflow\WFTask.cs" />
+    <Compile Include="Workflow\WorkflowP.cs" />
     <Compile Include="Tool\AbstractTool.cs" />
     <Compile Include="Tool\ITool.cs" />
     <Compile Include="MapControl\ObjectMapBox.cs">
@@ -196,6 +220,12 @@
     <Compile Include="UI\StructureForm.Designer.cs">
       <DependentUpon>StructureForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\WorkflowForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\WorkflowForm.Designer.cs">
+      <DependentUpon>WorkflowForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Util\Coordtransform.cs" />
     <Compile Include="Util\GlobalContainer.cs" />
     <Compile Include="Util\IDGenerator.cs" />
@@ -242,6 +272,9 @@
     <EmbeddedResource Include="UI\StructureForm.resx">
       <DependentUpon>StructureForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\WorkflowForm.resx">
+      <DependentUpon>WorkflowForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -264,6 +297,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="data_transport_72px_14870_easyicon.net.ico" />
+    <Content Include="kexi_Data_128px_540740_easyicon.net.ico" />
     <Content Include="test.py" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

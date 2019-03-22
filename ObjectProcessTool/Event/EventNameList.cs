@@ -19,5 +19,7 @@ namespace ObjectProcessTool.Event
         public const string END_DARGMAP = "END_DARGMAP";
 
         public static string DRAGMAP = "DRAGMAP";
+
+        public static string ADDTASK = "ADDTASK";
     }
 }

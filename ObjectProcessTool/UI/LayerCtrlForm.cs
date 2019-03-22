@@ -2,6 +2,7 @@
 using Microsoft.Scripting.Hosting;
 using ObjectProcessTool.Bil;
 using ObjectProcessTool.Command;
+using ObjectProcessTool.Event;
 using ObjectProcessTool.Layer;
 using ObjectProcessTool.MapControl;
 using ObjectProcessTool.Model;
@@ -119,10 +120,10 @@ namespace ObjectProcessTool.UI
         {
             try
             {
-               /* ScriptEngine pyEngine = Python.CreateEngine();
-                ScriptScope scope = pyEngine.CreateScope();
-                pyEngine.Execute(python_textBox.Text, scope);
-                */
+                /* ScriptEngine pyEngine = Python.CreateEngine();
+                 ScriptScope scope = pyEngine.CreateScope();
+                 pyEngine.Execute(python_textBox.Text, scope);
+                 */
 
                 ILayer layer = GetSelectLayer();
                 if (layer is SObjectLayer)
@@ -133,7 +134,7 @@ namespace ObjectProcessTool.UI
 
 
                     //List<string> vns = scope.GetVariableNames().ToList();
-                    if (tuple.Item1== "convert")
+                    if (tuple.Item1 == "convert")
                     {
                         dynamic convertFunction = tuple.Item2;// scope.GetVariable("convert");
                         foreach (SObject sObject in sObjectLayer.SObjects)
@@ -143,7 +144,7 @@ namespace ObjectProcessTool.UI
 
                         MessageBox.Show("执行成功");
                     }
-                    else if (tuple.Item1=="select")
+                    else if (tuple.Item1 == "select")
                     {
 
                         Map map = GlobalContainer.GetInstance<Map>("Map");
@@ -203,7 +204,7 @@ namespace ObjectProcessTool.UI
         {
             ILayer layer = GetSelectLayer();
             if (layer is VectorLayer)
-            {                
+            {
                 VectorLayer vectorLayer = layer as VectorLayer;
                 FeatureDataSet ds = new FeatureDataSet();
                 vectorLayer.ExecuteIntersectionQuery(vectorLayer.Envelope, ds);
@@ -221,6 +222,16 @@ namespace ObjectProcessTool.UI
                 }
 
             }
+        }
+        /// <summary>
+        /// 添加到批处理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void addworkflow_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ILayer layer = GetSelectLayer();
+            EventManage.Instance.FireEvent(EventNameList.ADDTASK, layer);
         }
     }
 }
